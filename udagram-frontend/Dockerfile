@@ -1,5 +1,5 @@
 ## Build
-FROM node:14
+FROM node:16.5.0
 FROM beevelop/ionic:latest AS ionic
 
 # Create app directory
