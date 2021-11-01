@@ -15,4 +15,28 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  - docker-compose -f docker-compose-build.yaml build --parallel
+  #- docker-compose -f docker-compose-build.yaml build --parallel
+  
+  #Build Reverse Proxy
+  - docker build -t udagram-reverseproxy ./udagram-reverseproxy
+  - docker tag udagram-reverseproxy smsrinivas781981/reverse-proxy
+  
+  #Build API User
+  - docker build -t udagram-api-user ./udagram-api-user
+  - docker tag udagram-api-user smsrinivas781981/udagram-api-user
+  
+  #Build API Feed
+  - docker build -t udagram-api-feed ./udagram-api-feed
+  - docker tag udagram-api-feed smsrinivas781981/udagram-api-feed
+  
+  #Build Frontend App
+  - docker build -t udagram-frontend ./udagram-frontend
+  - docker tag udagram-frontend smsrinivas781981/udagram-frontend
+  
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  #Push all Images
+  - docker push smsrinivas781981/udagram-api-feed
+  - docker push smsrinivas781981/udagram-api-user
+  - docker push smsrinivas781981/udagram-frontend
+  - docker push smsrinivas781981/reverse-proxy
