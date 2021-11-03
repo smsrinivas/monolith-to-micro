@@ -10,7 +10,7 @@ WORKDIR /usr/src/app
 #COPY package*.json ./ #- This didn't work on Travis Ci
 COPY package.json ./
 
-RUN npm i --legacy-peer-deps
+RUN npm install -f --legacy-peer-deps
 
 # Bundle app source
 COPY . .
