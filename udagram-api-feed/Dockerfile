@@ -8,9 +8,8 @@ WORKDIR /usr/src/app
 
 #COPY package*.json ./ #- This didn't work on Travis Ci
 COPY package.json ./
-COPY package-lock.json ./
 
-RUN npm ci 
+RUN npm i --legacy-peer-deps
 
 # Bundle app source
 COPY . .

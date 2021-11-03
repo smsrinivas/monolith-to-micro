@@ -7,9 +7,8 @@ WORKDIR /usr/src/app
 # A wildcard is used to ensure both package.json AND package-lock.json are copied where available (npm@5+)
 #COPY package*.json ./ #- This didn't work on Travis Ci
 COPY package.json ./
-COPY package-lock.json ./
 
-RUN npm ci 
+RUN npm i --legacy-peer-deps
 
 # Bundle app source
 COPY . .
