@@ -18,4 +18,4 @@ spec:
       - name: udagram-reverseproxy
         image: smsrinivas781981/reverse-proxy
         ports:
-        - containerPort: 8080
+        - containerPort: 80

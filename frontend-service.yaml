@@ -5,8 +5,10 @@ metadata:
   labels:
     run: udagram-frontend
 spec:
+  type: LoadBalancer
   ports:
-  - port: 8080
+  - port: 80
     protocol: TCP
+    targetPort: 80
   selector:
     run: udagram-frontend
