@@ -17,5 +17,12 @@ spec:
       containers:
         - name: udagram-reverseproxy
           image: smsrinivas781981/reverse-proxy:latest
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "200Mi"
+            requests:
+              cpu: "100m"
+              memory: "100Mi"
           ports:
             - containerPort: 80
