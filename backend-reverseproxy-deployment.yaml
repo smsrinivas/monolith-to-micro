@@ -5,7 +5,7 @@ metadata:
   labels:
     app: udagram-reverseproxy
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: udagram-reverseproxy
@@ -15,7 +15,7 @@ spec:
         app: udagram-reverseproxy
     spec:
       containers:
-      - name: udagram-reverseproxy
-        image: smsrinivas781981/reverse-proxy
-        ports:
-        - containerPort: 80
+        - name: udagram-reverseproxy
+          image: smsrinivas781981/reverse-proxy:latest
+          ports:
+            - containerPort: 80
